@@ -268,7 +268,7 @@ function sprite(rgb){
 }
 var SOFT_A=sprite('176,62,22'),SOFT_B=sprite('168,104,38');
 var mouse={x:-999,y:-999};var ftT=0,ftTarget=0;
-var soft={x:-999,y:-999},AVOID_OUT=115,AVOID_IN=35,AVOID_PUSH=.6,AVOID_DIM=.85;
+var soft={x:-999,y:-999},AVOID_OUT=130,AVOID_IN=50,AVOID_PUSH=.95,AVOID_DIM=.95;
 function avoidAt(d){var e=clamp((AVOID_OUT-d)/(AVOID_OUT-AVOID_IN),0,1);return e*e*(3-2*e)}
 function size(){
  D=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
