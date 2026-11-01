@@ -280,6 +280,18 @@ function seed(){
  /* keep first 50 by index; shuffle draw positions already random */
  ST[5].k=50/N;
 }
+var focusRects=[],OUT=170,IN=24;
+function measure(){
+ OUT=W<820?90:170;
+ focusRects=[].map.call(document.querySelectorAll('.hero h1,.hero .sub,.cue,.stage-copy,.top>a,.top nav'),function(el){return el.getBoundingClientRect()}).filter(function(r){return r.bottom>-OUT&&r.top<H+OUT});
+}
+/* 0 = sharp spark, 1 = fully blurred; smooth falloff so no visible edge */
+function blurAt(x,y){
+ var f=0;
+ for(var i=0;i<focusRects.length;i++){var r=focusRects[i],dx=Math.max(r.left-x,0,x-r.right),dy=Math.max(r.top-y,0,y-r.bottom),d=Math.sqrt(dx*dx+dy*dy);
+  if(d<OUT){var t=clamp((OUT-d)/(OUT-IN),0,1);f=Math.max(f,t*t*(3-2*t))}}
+ return f;
+}
 function keepAt(t){var a=Math.floor(t),b=Math.min(5,a+1);return lerp(ST[a].k,ST[b].k,t-a)}
 var clock=0,last=0;
 function frame(now){
@@ -288,6 +300,7 @@ function frame(now){
  var ease=function(b){return 1-Math.pow(1-b,dt/16.7)},kPos=ease(.05),kAlpha=ease(.07);
  ftT+=(ftTarget-ftT)*ease(.08);
  cx.clearRect(0,0,W,H);
+ measure();
  var keep=keepAt(ftT),q=ftT/5,mobile=W<820;
  var ccx=lerp(W*.5,mobile?W*.5:W*.72,clamp(ftT*1.4,0,1));
  var ccy=lerp(H*.5,mobile?H*.72:H*.5,clamp(ftT*1.4,0,1));
@@ -307,11 +320,16 @@ function frame(now){
   if(d2<16000&&ftT<.5){var f=(16000-d2)/16000*16,dd=Math.sqrt(d2)||1;p.x+=dx/dd*f;p.y+=dy/dd*f}
   p.x+=(tx-p.x)*kPos;p.y+=(ty-p.y)*kPos;
   var flicker=.72+.28*Math.sin(clock*2.2+p.ph);
-  var ta=alive?(p.i<50&&gridOn>.5?1:.34+.26*flicker):.04;p.a+=(ta-p.a)*kAlpha;
+  var ta=alive?(p.i<50&&gridOn>.5?1:.55+.45*flicker):.04;p.a+=(ta-p.a)*kAlpha;
   var r=p.s*(alive?1:.7)*(p.i<50&&gridOn>0?lerp(1,mobile?2.6:3.4,gridOn):1);
   if(alive&&!(p.i<50&&gridOn>.5)){
-   var b=r*p.blur;cx.globalAlpha=p.a;
-   cx.drawImage(n%3===0?SOFT_B:SOFT_A,p.x-b,p.y-b,b*2,b*2);cx.globalAlpha=1;
+   var f=blurAt(p.x,p.y);
+   if(f>.01){var b=r*p.blur;cx.globalAlpha=p.a*.6*f;cx.drawImage(n%3===0?SOFT_B:SOFT_A,p.x-b,p.y-b,b*2,b*2);cx.globalAlpha=1}
+   if(f<.99){
+    var al=p.a*(1-f);cx.fillStyle=n%3===0?'rgba(255,179,71,'+al+')':'rgba(255,106,43,'+al+')';
+    if(r>1.6){cx.globalAlpha=.16;cx.beginPath();cx.arc(p.x,p.y,r*3.2,0,6.28);cx.fill();cx.globalAlpha=1}
+    cx.beginPath();cx.arc(p.x,p.y,r,0,6.28);cx.fill();
+   }
   }else if(alive){
    cx.fillStyle='rgba(255,214,150,.16)';cx.beginPath();cx.arc(p.x,p.y,r*2,0,6.28);cx.fill();
    cx.fillStyle='rgba(255,226,175,'+p.a+')';cx.beginPath();cx.arc(p.x,p.y,r,0,6.28);cx.fill();
