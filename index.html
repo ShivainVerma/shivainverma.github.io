@@ -160,7 +160,7 @@ html{scroll-behavior:auto}
       <p class="label" id="stLabel">Step 1 of 6</p>
       <div class="count" id="stCount" aria-live="off">300,167,701</div>
       <h2 class="stage-name" id="stName">300 million people</h2>
-      <p class="stage-note" id="stNote">Every ember is a group of real people in Clay's database. My client, Ember (a fictional AI voice agent company), can only sell to a tiny share of them. Scroll to watch each filter remove the wrong ones.</p>
+      <p class="stage-note" id="stNote">Every ember is a group of real people in Clay's database. My agency Ember works for Pelican Voice, a fictional AI voice agent company, which can only sell to a tiny share of them. Scroll to watch each filter remove the wrong ones.</p>
       <div class="pips" id="pips" aria-hidden="true"></div>
     </div>
   </div></div>
@@ -243,7 +243,7 @@ function lerp(a,b,t){return a+(b-a)*t}
 
 /* funnel stages use the real result counts from the Clay search */
 var ST=[
-{n:'300 million people',c:300167701,k:1,d:"Every ember is a group of real people in Clay's database. My client, Ember (a fictional AI voice agent company), can only sell to a tiny share of them. Scroll to watch each filter remove the wrong ones."},
+{n:'300 million people',c:300167701,k:1,d:"Every ember is a group of real people in Clay's database. My agency Ember works for Pelican Voice, a fictional AI voice agent company, which can only sell to a tiny share of them. Scroll to watch each filter remove the wrong ones."},
 {n:'Filter 1: Job title',c:6004317,k:.6,d:'I kept 8 roles that own sales and enquiry follow up, like Head of Sales, VP Sales and Head of Admissions. Everyone else cannot buy, so 98% of the list goes in one step.'},
 {n:'Filter 2: Country',c:2640904,k:.42,d:'The client sells in India and the United States. Anyone outside those markets is removed, which cuts the list by more than half again.'},
 {n:'Filter 3: Industry',c:89851,k:.17,d:'Real estate, education and car dealerships get a flood of phone enquiries, so a voice agent solves a real problem for them. Car manufacturers rarely do, so they stay out.'},
@@ -401,7 +401,7 @@ function score(){
 score();
 
 /* typed email, invented person */
-var LINES=['Hi Priya,','Priya, missed calls during busy hours may mean lost enquiries for Northgate Realty.','Ember answers every call and follows up on each enquiry within a minute.','Happy to send a short example call. Curious if this might matter for Northgate Realty?','Best regards,<br>Shivain'];
+var LINES=['Hi Priya,','Priya, missed calls during busy hours may mean lost enquiries for Northgate Realty.','Pelican Voice answers every call and follows up on each enquiry within a minute.','Happy to send a short example call. Curious if this might matter for Northgate Realty?','Best regards,<br>Shivain'];
 var mb=$('mailBody'),typed=false;
 function typeMail(){
  if(typed)return;typed=true;
