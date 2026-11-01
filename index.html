@@ -268,6 +268,8 @@ function sprite(rgb){
 }
 var SOFT_A=sprite('176,62,22'),SOFT_B=sprite('168,104,38');
 var mouse={x:-999,y:-999};var ftT=0,ftTarget=0;
+var AVOID_OUT=95,AVOID_IN=63,AVOID_PUSH=3;
+function avoidAt(d){var e=clamp((AVOID_OUT-d)/(AVOID_OUT-AVOID_IN),0,1);return e*e*(3-2*e)}
 function size(){
  D=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
  cv.width=W*D;cv.height=H*D;cx.setTransform(D,0,0,D,0,0);
@@ -303,6 +305,7 @@ function frame(now){
  cx.clearRect(0,0,W,H);
  measure();
  var keep=keepAt(ftT),q=ftT/5,mobile=W<820;
+ var avoidOn=clamp((.5-ftT)/.2,0,1);
  var ccx=W*.5,ccy=H*.5,sx=W,sy=H;
  var gridOn=clamp((ftT-4.3)/.6,0,1);
  var copy=$('stCount').parentNode.getBoundingClientRect();
@@ -318,16 +321,17 @@ function frame(now){
    tx=lerp(tx,gx,gridOn);ty=lerp(ty,gy,gridOn);
   }
   var dx=p.x-mouse.x,dy=p.y-mouse.y,d2=dx*dx+dy*dy;
-  if(d2<16000&&ftT<.5){var f=(16000-d2)/16000*16,dd=Math.sqrt(d2)||1;p.x+=dx/dd*f;p.y+=dy/dd*f}
+  if(d2<AVOID_OUT*AVOID_OUT&&ftT<.5){var dd=Math.sqrt(d2)||1,e=avoidAt(dd),f=e*AVOID_PUSH*dt/16.7*avoidOn;p.x+=dx/dd*f;p.y+=dy/dd*f}
   p.x+=(tx-p.x)*kPos;p.y+=(ty-p.y)*kPos;
+  var hole=1-avoidAt(Math.hypot(p.x-mouse.x,p.y-mouse.y))*avoidOn;
   var flicker=.72+.28*Math.sin(clock*2.2+p.ph);
   var ta=alive?(p.i<50&&gridOn>.5?1:.55+.45*flicker):.04;p.a+=(ta-p.a)*kAlpha;
   var r=p.s*(alive?1:.7)*(p.i<50&&gridOn>0?lerp(1,mobile?2.6:3.4,gridOn):1);
   if(alive&&!(p.i<50&&gridOn>.5)){
    var f=blurAt(p.x,p.y);
-   if(f>.01){var b=r*p.blur;cx.globalAlpha=p.a*.6*f;cx.drawImage(n%3===0?SOFT_B:SOFT_A,p.x-b,p.y-b,b*2,b*2);cx.globalAlpha=1}
+   if(f>.01){var b=r*p.blur;cx.globalAlpha=p.a*.6*f*hole;cx.drawImage(n%3===0?SOFT_B:SOFT_A,p.x-b,p.y-b,b*2,b*2);cx.globalAlpha=1}
    if(f<.99){
-    var al=p.a*(1-f);cx.fillStyle=n%3===0?'rgba(255,179,71,'+al+')':'rgba(255,106,43,'+al+')';
+    var al=p.a*(1-f)*hole;cx.fillStyle=n%3===0?'rgba(255,179,71,'+al+')':'rgba(255,106,43,'+al+')';
     if(r>1.6){cx.globalAlpha=.16;cx.beginPath();cx.arc(p.x,p.y,r*3.2,0,6.28);cx.fill();cx.globalAlpha=1}
     cx.beginPath();cx.arc(p.x,p.y,r,0,6.28);cx.fill();
    }
