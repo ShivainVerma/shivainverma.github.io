@@ -268,7 +268,7 @@ function sprite(rgb){
 }
 var SOFT_A=sprite('176,62,22'),SOFT_B=sprite('168,104,38');
 var mouse={x:-999,y:-999};var ftT=0,ftTarget=0;
-var AVOID_OUT=95,AVOID_IN=63,AVOID_PUSH=3;
+var soft={x:-999,y:-999},AVOID_OUT=115,AVOID_IN=25,AVOID_PUSH=.28,AVOID_DIM=.6;
 function avoidAt(d){var e=clamp((AVOID_OUT-d)/(AVOID_OUT-AVOID_IN),0,1);return e*e*(3-2*e)}
 function size(){
  D=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
@@ -278,7 +278,7 @@ function seed(){
  N=W<820?800:1900;P=[];
  for(var i=0;i<N;i++){
   var hx=Math.random(),hy=Math.random();
-  P.push({i:i,hx:hx,hy:hy,x:hx*W,y:hy*H,s:.7+Math.random()*1.7,blur:3+Math.random()*4,ph:Math.random()*6.28,sp:.00012+Math.random()*.00034,a:0});
+  P.push({i:i,hx:hx,hy:hy,x:hx*W,y:hy*H,s:.7+Math.random()*1.7,blur:3+Math.random()*4,ph:Math.random()*6.28,sp:.00012+Math.random()*.00034,a:0,vx:0,vy:0,h:1,reach:.8+Math.random()*.45});
  }
  /* keep first 50 by index; shuffle draw positions already random */
  ST[5].k=50/N;
@@ -305,7 +305,8 @@ function frame(now){
  cx.clearRect(0,0,W,H);
  measure();
  var keep=keepAt(ftT),q=ftT/5,mobile=W<820;
- var avoidOn=clamp((.5-ftT)/.2,0,1);
+ var avoidOn=clamp((.5-ftT)/.2,0,1),kV=Math.pow(.9,dt/16.7),kH=ease(.05),kC=ease(.08);
+ if(mouse.x>-900){if(soft.x<-900){soft.x=mouse.x;soft.y=mouse.y}soft.x+=(mouse.x-soft.x)*kC;soft.y+=(mouse.y-soft.y)*kC}
  var ccx=W*.5,ccy=H*.5,sx=W,sy=H;
  var gridOn=clamp((ftT-4.3)/.6,0,1);
  var copy=$('stCount').parentNode.getBoundingClientRect();
@@ -320,18 +321,18 @@ function frame(now){
    var gx=gcx+((p.i%cols)-(cols-1)/2)*cell,gy=gcy+(Math.floor(p.i/cols)-(rows-1)/2)*cell;
    tx=lerp(tx,gx,gridOn);ty=lerp(ty,gy,gridOn);
   }
-  var dx=p.x-mouse.x,dy=p.y-mouse.y,d2=dx*dx+dy*dy;
-  if(d2<AVOID_OUT*AVOID_OUT&&ftT<.5){var dd=Math.sqrt(d2)||1,e=avoidAt(dd),f=e*AVOID_PUSH*dt/16.7*avoidOn;p.x+=dx/dd*f;p.y+=dy/dd*f}
-  p.x+=(tx-p.x)*kPos;p.y+=(ty-p.y)*kPos;
-  var hole=1-avoidAt(Math.hypot(p.x-mouse.x,p.y-mouse.y))*avoidOn;
+  var dx=p.x-soft.x,dy=p.y-soft.y,dd=Math.sqrt(dx*dx+dy*dy)||1,e=avoidAt(dd/p.reach)*avoidOn;
+  p.vx=(p.vx+dx/dd*e*AVOID_PUSH*dt/16.7)*kV;p.vy=(p.vy+dy/dd*e*AVOID_PUSH*dt/16.7)*kV;
+  p.x+=(tx-p.x)*kPos+p.vx;p.y+=(ty-p.y)*kPos+p.vy;
+  p.h+=(1-e*AVOID_DIM-p.h)*kH;
   var flicker=.72+.28*Math.sin(clock*2.2+p.ph);
   var ta=alive?(p.i<50&&gridOn>.5?1:.55+.45*flicker):.04;p.a+=(ta-p.a)*kAlpha;
   var r=p.s*(alive?1:.7)*(p.i<50&&gridOn>0?lerp(1,mobile?2.6:3.4,gridOn):1);
   if(alive&&!(p.i<50&&gridOn>.5)){
    var f=blurAt(p.x,p.y);
-   if(f>.01){var b=r*p.blur;cx.globalAlpha=p.a*.6*f*hole;cx.drawImage(n%3===0?SOFT_B:SOFT_A,p.x-b,p.y-b,b*2,b*2);cx.globalAlpha=1}
+   if(f>.01){var b=r*p.blur;cx.globalAlpha=p.a*.6*f*p.h;cx.drawImage(n%3===0?SOFT_B:SOFT_A,p.x-b,p.y-b,b*2,b*2);cx.globalAlpha=1}
    if(f<.99){
-    var al=p.a*(1-f)*hole;cx.fillStyle=n%3===0?'rgba(255,179,71,'+al+')':'rgba(255,106,43,'+al+')';
+    var al=p.a*(1-f)*p.h;cx.fillStyle=n%3===0?'rgba(255,179,71,'+al+')':'rgba(255,106,43,'+al+')';
     if(r>1.6){cx.globalAlpha=.16;cx.beginPath();cx.arc(p.x,p.y,r*3.2,0,6.28);cx.fill();cx.globalAlpha=1}
     cx.beginPath();cx.arc(p.x,p.y,r,0,6.28);cx.fill();
    }
