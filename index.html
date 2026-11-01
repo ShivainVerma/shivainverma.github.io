@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shivain Verma | GTM Engineering</title>
+<meta name="description" content="Shivain Verma sold to the buyers, then built the system that finds them. Outbound and GTM engineering, Bengaluru.">
+<meta property="og:title" content="Shivain Verma | GTM Engineering">
+<meta property="og:description" content="300 million people in. 50 ranked leads out. See the system.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='%23ff6a2b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0f0d0b;--ink2:#1a1714;--ink3:#26211c;--cream:#f4eee2;--mute:#a59c8d;--line:#352e27;--ember:#ff6a2b;--amber:#ffb347;--ash:#6e665b;--good:#8fd694;--serif:"Fraunces",Georgia,serif;--sans:"DM Sans",system-ui,sans-serif;--mono:"DM Mono",ui-monospace,monospace}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--ink)}
+body{margin:0;color:var(--cream);font-family:var(--sans);font-size:18px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::selection{background:var(--ember);color:var(--ink)}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+#field{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;transition:opacity .5s}
+#bar{position:fixed;top:0;left:0;height:2px;width:100%;background:var(--ember);transform:scaleX(0);transform-origin:left;z-index:30}
+.top{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:18px clamp(20px,4vw,48px);font-family:var(--mono);font-size:13px;mix-blend-mode:difference}
+.top a{text-decoration:none;color:#fff}
+.top nav a{margin-left:22px}
+.top nav a:hover{text-decoration:underline;text-underline-offset:4px}
+main{position:relative;z-index:2}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,4vw,48px)}
+.label{font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--amber);margin:0 0 18px}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,5.4vw,60px);line-height:1.08;letter-spacing:-.02em;margin:0 0 20px}
+h2 em{color:var(--ember);font-style:italic}
+.sub{color:var(--mute);max-width:600px;margin:0}
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative}
+.hero::before{content:"";position:absolute;inset:0 -30% 0 -30%;z-index:-1;background:radial-gradient(ellipse 46% 44% at 36% 50%,rgba(15,13,11,.62),rgba(15,13,11,.3) 64%,transparent 82%);pointer-events:none}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,9.4vw,118px);line-height:.98;letter-spacing:-.03em;margin:0 0 28px;max-width:11em}
+.hero h1 span{display:block;overflow:hidden;padding-bottom:.08em}
+.hero h1 span i{display:block;font-style:normal;transform:translateY(110%);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 span:nth-child(2) i{animation-delay:.14s;font-style:italic;color:var(--ember)}
+@keyframes rise{to{transform:none}}
+.hero .sub{font-size:20px;opacity:0;animation:fade .9s .6s forwards}
+@keyframes fade{to{opacity:1}}
+.cue{position:absolute;bottom:28px;left:clamp(20px,4vw,48px);font-family:var(--mono);font-size:13px;color:var(--mute);opacity:0;animation:fade 1s 1.1s forwards}
+.cue b{display:inline-block;font-weight:400;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+#funnel{height:620vh;position:relative}
+.stick{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center;overflow:hidden}
+.stage-copy{max-width:470px;position:relative}
+.count{font-family:var(--mono);font-size:clamp(40px,7vw,78px);line-height:1;letter-spacing:-.03em;color:var(--cream);font-variant-numeric:tabular-nums;margin:6px 0 16px}
+.stage-name{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);line-height:1.15;margin:0 0 8px}
+.stage-note{color:var(--mute);margin:0;min-height:3.2em}
+.pips{display:flex;gap:6px;margin-top:22px}
+.pips i{height:3px;flex:1;background:var(--line);transition:background .3s}
+.pips i.on{background:var(--ember)}
+.block{padding:clamp(80px,12vw,150px) 0;position:relative}
+.solid{background:var(--ink2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.lab{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(28px,5vw,64px);margin-top:48px;align-items:center}
+.opt{border:0;padding:0;margin:0 0 22px;min-width:0}
+.opt legend{font-family:var(--mono);font-size:13px;color:var(--mute);padding:0;margin-bottom:9px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:9px 15px;border:1px solid var(--line);border-radius:999px;font-size:15px;line-height:1.3;transition:background .2s,color .2s,border-color .2s,transform .15s}
+.chip:hover{border-color:var(--ember)}
+.chip:active{transform:scale(.96)}
+.chip[aria-pressed=true]{background:var(--ember);border-color:var(--ember);color:var(--ink);font-weight:500}
+.meter{position:relative;max-width:340px;margin:0 auto;text-align:center}
+.meter svg{width:100%;display:block;transform:rotate(-90deg)}
+.meter circle{fill:none;stroke-width:9}
+#ring{stroke:var(--ember);stroke-linecap:round;transition:stroke-dashoffset .7s cubic-bezier(.2,.8,.2,1),stroke .4s}
+.meter .num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--mono)}
+.meter .num b{font-size:clamp(58px,8vw,84px);font-weight:400;line-height:1;letter-spacing:-.04em}
+.meter .num span{font-size:13px;color:var(--mute);margin-top:6px}
+.verdict{margin-top:18px;font-family:var(--serif);font-size:23px;line-height:1.25;min-height:2.5em}
+.verdict small{display:block;font-family:var(--sans);font-size:15px;color:var(--mute);margin-top:6px}
+.router{margin-top:48px;display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,4vw,56px)}
+.samples{display:flex;flex-direction:column;gap:9px;margin-bottom:16px}
+.samp{text-align:left;padding:13px 16px;border:1px solid var(--line);border-radius:10px;background:var(--ink2);font-size:16px;transition:border-color .2s,transform .2s}
+.samp:hover{border-color:var(--ember);transform:translateX(4px)}
+.try{display:flex;gap:8px}
+.try input{flex:1;min-width:0;background:var(--ink2);border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:var(--cream);font:inherit;font-size:16px}
+.try input::placeholder{color:var(--ash)}
+.try button{padding:0 16px;border-radius:10px;background:var(--cream);color:var(--ink);font-weight:500;font-size:15px}
+.lanes{display:flex;flex-direction:column;gap:8px}
+.lane{position:relative;display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:border-color .3s}
+.lane::before{content:"";position:absolute;inset:0;background:var(--ember);opacity:.14;transform:scaleX(0);transform-origin:left;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.lane>*{position:relative}
+.lane b{font-family:var(--mono);font-size:13px;font-weight:400;white-space:nowrap}
+.lane span{color:var(--mute);font-size:15px;text-align:right;line-height:1.3}
+.lane.hit{border-color:var(--ember)}
+.lane.hit::before{transform:none}
+.lane.hit span{color:var(--cream)}
+.note{font-family:var(--mono);font-size:13px;color:var(--mute);margin-top:18px}
+.mail{margin-top:48px;max-width:640px;background:var(--cream);color:var(--ink);border-radius:14px;padding:clamp(22px,4vw,34px);font-size:17px;box-shadow:0 30px 80px -30px rgba(255,106,43,.45)}
+.mail header{font-family:var(--mono);font-size:13px;color:#6b6358;border-bottom:1px solid #d9cfbd;padding-bottom:12px;margin-bottom:16px}
+.mail p{margin:0 0 12px;min-height:1.6em}
+.caret{display:inline-block;width:2px;height:1em;background:var(--ember);vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.timeline{margin-top:48px;position:relative;padding-left:30px}
+.timeline::before,.tl-fill{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.tl-fill{background:var(--ember);transform:scaleY(0);transform-origin:top}
+.job{position:relative;padding:0 0 46px}
+.job::before{content:"";position:absolute;left:-31px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--ink2);border:2px solid var(--ember)}
+.job h3{font-family:var(--serif);font-weight:400;font-size:clamp(23px,3vw,30px);line-height:1.2;margin:0}
+.job .meta{font-family:var(--mono);font-size:13px;color:var(--amber);margin:6px 0 10px}
+.job p{margin:0;color:var(--mute);max-width:660px}
+.tape{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;background:var(--ink);white-space:nowrap}
+.tape div{display:inline-block;font-family:var(--serif);font-style:italic;font-size:clamp(24px,3.6vw,38px);animation:slide 36s linear infinite}
+.tape span{margin:0 26px}
+.tape span:nth-child(even){color:var(--ember)}
+@keyframes slide{to{transform:translateX(-50%)}}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.fact{border:1px solid var(--line);border-radius:12px;padding:22px;background:var(--ink2);transition:transform .25s,border-color .25s}
+.fact:hover{transform:translateY(-4px);border-color:var(--ember)}
+.fact h3{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.2;margin:0 0 8px}
+.fact p{margin:0;color:var(--mute);font-size:16px}
+.end{min-height:82vh;display:flex;flex-direction:column;justify-content:center}
+.end h2{font-size:clamp(44px,8vw,96px)}
+.big{display:inline-block;font-family:var(--serif);font-size:clamp(23px,4.1vw,44px);color:var(--ember);text-decoration:none;border-bottom:2px solid var(--ember);padding-bottom:4px;transition:color .2s,border-color .2s;word-break:break-word}
+.big:hover{color:var(--amber);border-color:var(--amber)}
+.links{margin-top:30px;font-family:var(--mono);font-size:14px;display:flex;gap:24px;flex-wrap:wrap}
+.links a{text-underline-offset:4px}
+footer{padding:24px 0 34px;font-family:var(--mono);font-size:13px;color:var(--ash);position:relative;z-index:2}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (max-width:820px){
+body{font-size:17px}
+.top nav a{margin-left:14px}
+.top nav a.hide{display:none}
+.lab,.router{grid-template-columns:1fr}
+.meter{max-width:250px}
+.facts{grid-template-columns:1fr}
+.stick{align-items:flex-start;padding-top:96px}
+.stage-copy{background:rgba(15,13,11,.72);padding:16px;margin:0 -16px;border-radius:12px}
+.stage-note{min-height:4.8em}
+}
+@media (prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+.rv{opacity:1;transform:none}
+.tape div{animation:none}
+}
+</style>
+</head>
+<body>
+<canvas id="field" aria-hidden="true"></canvas>
+<div id="bar" aria-hidden="true"></div>
+<div class="top"><a href="#top">Shivain Verma</a><nav aria-label="Main"><a href="#funnel" class="hide">The system</a><a href="#score">Play</a><a href="#path" class="hide">Path</a><a href="#hello">Hello</a></nav></div>
+
+<main id="top">
+<section class="hero wrap">
+  <h1><span><i>I sold to the buyers.</i></span><span><i>Then I built the system that finds them.</i></span></h1>
+  <p class="sub">Outbound and GTM engineering, based in Bengaluru. Move your cursor through the sparks, then keep scrolling to watch 300 million people become 50 leads.</p>
+  <p class="cue">Scroll <b>↓</b></p>
+</section>
+
+<section id="funnel" aria-label="How the lead funnel narrows">
+  <div class="stick"><div class="wrap" style="width:100%">
+    <div class="stage-copy">
+      <p class="label" id="stLabel">The system, step 1 of 6</p>
+      <div class="count" id="stCount" aria-live="off">300,167,701</div>
+      <h2 class="stage-name" id="stName">Everyone</h2>
+      <p class="stage-note" id="stNote">Every person in Clay's people search. Real numbers from a real search.</p>
+      <div class="pips" id="pips" aria-hidden="true"></div>
+    </div>
+  </div></div>
+</section>
+
+<section class="block solid" id="score"><div class="wrap">
+  <p class="label rv">Play with it</p>
+  <h2 class="rv">Would you make the <em>list?</em></h2>
+  <p class="sub rv">This is the scoring model from the project. Change a lead and watch the score. A big title at the wrong company still gets flagged, because sales time is the scarcest thing a team has.</p>
+  <div class="lab rv">
+    <div id="opts"></div>
+    <div class="meter">
+      <svg viewBox="0 0 120 120" role="img" aria-label="Fit score out of 50"><circle cx="60" cy="60" r="52" stroke="#352e27"/><circle id="ring" cx="60" cy="60" r="52"/></svg>
+      <div class="num"><b id="scoreNum">50</b><span>fit score / 50</span></div>
+      <div class="verdict" id="verdict" aria-live="polite"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="block"><div class="wrap">
+  <p class="label rv">The first line</p>
+  <h2 class="rv">Written for one person, <em>at scale.</em></h2>
+  <p class="sub rv">An AI column writes an opener for every lead from their company and likely problem. Short, plain, and one easy question. The name and company below are invented.</p>
+  <div class="mail rv" id="mail" aria-label="Sample cold email">
+    <header>Subject: Enquiry follow up</header>
+    <div id="mailBody"></div>
+  </div>
+</div></section>
+
+<section class="block solid"><div class="wrap">
+  <p class="label rv">Next build</p>
+  <h2 class="rv">Every reply, <em>sorted.</em></h2>
+  <p class="sub rv">The next layer reads each reply and acts on it, so a warm prospect never waits. Pick a reply, or type your own.</p>
+  <div class="router rv">
+    <div>
+      <div class="samples" id="samples"></div>
+      <form class="try" id="tryForm"><input id="tryInput" aria-label="Type a reply" placeholder="Type a reply" maxlength="120" autocomplete="off"><button type="submit">Sort</button></form>
+    </div>
+    <div class="lanes" id="lanes"></div>
+  </div>
+  <p class="note rv">This page uses simple keyword rules to show the idea. The real workflow uses n8n and an AI model, and I'm building it now.</p>
+</div></section>
+
+<div class="tape" aria-hidden="true"><div id="tape"></div></div>
+
+<section class="block" id="path"><div class="wrap">
+  <p class="label rv">Path</p>
+  <h2 class="rv">From cold calls <em>to systems.</em></h2>
+  <div class="timeline" id="timeline">
+    <div class="tl-fill" id="tlFill"></div>
+    <article class="job rv"><h3>GTM project: Ember outbound engine</h3><div class="meta">2026 · Portfolio project · Fictional client</div><p>Built a Clay table on 50 real leads with enrichment, a formula scoring model, automatic review flags and AI first lines, plus a four email sequence. Built on free tools only.</p></article>
+    <article class="job rv"><h3>Sales Development Representative, Origa</h3><div class="meta">Aug to Oct 2026 · Internship · Remote</div><p>Ran cold calling and multichannel outbound end to end, from list build to qualified handoff, for an AI concierge platform across four verticals and four international markets.</p></article>
+    <article class="job rv"><h3>Assistant Social Media Manager, Mastermind Body Global</h3><div class="meta">Jul 2026 to present</div><p>Own the LinkedIn presence for a wellness and leadership coaching brand: content, design, targeted outreach and analytics across the founder profile and company page.</p></article>
+    <article class="job rv"><h3>Business Sales Representative, Emporis</h3><div class="meta">Jun to Jul 2026</div><p>Direct, face-to-face B2B and B2C campaigns for corporate clients, including client presentations, objection handling and closing.</p></article>
+    <article class="job rv"><h3>Marketing Intern, Zoca by TimelyAI</h3><div class="meta">Jun to Aug 2025</div><p>Profiled salons and spas across the US as SaaS prospects and built the outreach database behind sales targeting.</p></article>
+    <article class="job rv"><h3>Communication Lab, CAPS, Christ University</h3><div class="meta">Jul 2024 to Apr 2025</div><p>Designed, scripted and produced online courses for multiple college branches, from idea to delivery.</p></article>
+  </div>
+  <div class="facts">
+    <div class="fact rv"><h3>International Gold Medal</h3><p>NASA/Boeing International Space Settlement Design Competition.</p></div>
+    <div class="fact rv"><h3>Psychology + Media</h3><p>BA in Media and Communication, Psychology. CHRIST University, Bengaluru, 2023 to 2026.</p></div>
+    <div class="fact rv"><h3>Best Volunteer</h3><p>Volunteer of the Year 2024 to 2025, Communication Lab, CAPS.</p></div>
+  </div>
+</div></section>
+
+<section class="block solid end" id="hello"><div class="wrap">
+  <p class="label rv">Hello</p>
+  <h2 class="rv">Got a pipeline to <em>fill?</em></h2>
+  <a class="big rv" href="mailto:shivainverma555@gmail.com">shivainverma555@gmail.com</a>
+  <div class="links rv"><a href="https://www.linkedin.com/in/shivainverma">LinkedIn</a><a href="https://github.com/ShivainVerma">GitHub</a></div>
+</div></section>
+</main>
+<footer><div class="wrap">Shivain Verma · Bengaluru · No real prospect data on this page</div></footer>
+
+<script>
+(function(){
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var $=function(id){return document.getElementById(id)};
+function clamp(v,a,b){return Math.min(b,Math.max(a,v))}
+function lerp(a,b,t){return a+(b-a)*t}
+
+/* funnel stages use the real result counts from the Clay search */
+var ST=[
+{n:'Everyone',c:300167701,k:1,d:"Every person in Clay's people search. Real numbers from a real search."},
+{n:'Buyer titles',c:6004317,k:.6,d:'Head of Sales, VP Sales, Head of Admissions and five more who own the problem.'},
+{n:'India and the US',c:2640904,k:.42,d:'The markets the client sells in.'},
+{n:'The right industries',c:89851,k:.17,d:'Real estate, education and car dealerships. Manufacturers stay out, because they get few inbound enquiries.'},
+{n:'The right size',c:26586,k:.09,d:'51 to 500 staff. Big enough to have the problem, small enough to move.'},
+{n:'Scored and ready',c:50,k:0,d:'Saved to one table, enriched, scored and given a first line. These are the embers worth feeding.'}];
+
+var pips=$('pips');ST.forEach(function(){pips.appendChild(document.createElement('i'))});
+var shown=-1;
+function setStage(i){
+ if(i===shown)return;shown=i;var s=ST[i];
+ $('stLabel').textContent='The system, step '+(i+1)+' of 6';
+ $('stName').textContent=s.n;$('stNote').textContent=s.d;
+ [].forEach.call(pips.children,function(p,j){p.classList.toggle('on',j<=i)});
+}
+
+/* particle field */
+var cv=$('field'),cx=cv.getContext('2d'),W=0,H=0,D=1,P=[],N=0;
+var mouse={x:-999,y:-999};var ftT=0,ftTarget=0;
+function size(){
+ D=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;
+ cv.width=W*D;cv.height=H*D;cx.setTransform(D,0,0,D,0,0);
+}
+function seed(){
+ N=W<820?800:1900;P=[];
+ for(var i=0;i<N;i++){
+  var hx=Math.random(),hy=Math.random();
+  P.push({i:i,hx:hx,hy:hy,x:hx*W,y:hy*H,s:.7+Math.random()*1.7,ph:Math.random()*6.28,sp:.00012+Math.random()*.00034,a:0});
+ }
+ /* keep first 50 by index; shuffle draw positions already random */
+ ST[5].k=50/N;
+}
+function keepAt(t){var a=Math.floor(t),b=Math.min(5,a+1);return lerp(ST[a].k,ST[b].k,t-a)}
+var clock=0,last=0;
+function frame(now){
+ now=now||performance.now();var dt=clamp(now-last,8,250);last=now;
+ clock+=dt/1000;
+ var ease=function(b){return 1-Math.pow(1-b,dt/16.7)},kPos=ease(.05),kAlpha=ease(.07);
+ ftT+=(ftTarget-ftT)*ease(.08);
+ cx.clearRect(0,0,W,H);
+ var keep=keepAt(ftT),q=ftT/5,mobile=W<820;
+ var ccx=lerp(W*.5,mobile?W*.5:W*.72,clamp(ftT*1.4,0,1));
+ var ccy=lerp(H*.5,mobile?H*.72:H*.5,clamp(ftT*1.4,0,1));
+ var sx=lerp(W,mobile?W*.8:W*.42,clamp(q*1.5,0,1)),sy=lerp(H,mobile?H*.4:H*.72,clamp(q*1.5,0,1));
+ var gridOn=clamp((ftT-4.3)/.6,0,1);
+ var cell=mobile?Math.min(30,W*.07):Math.min(40,Math.max(24,W*.028)),cols=10,rows=5;
+ for(var n=0;n<N;n++){
+  var p=P[n],alive=(p.i+.5)/N<keep;
+  p.hy-=p.sp*(1-q*.9)*dt/16.7;if(p.hy<-.02)p.hy=1.02;
+  var tx=ccx+(p.hx-.5)*sx+Math.sin(clock*.7+p.ph)*7,ty=ccy+(p.hy-.5)*sy+Math.cos(clock*.5+p.ph)*7;
+  if(!alive){ty+=H*.5*clamp(q*1.3,0,1)*(.4+p.hx);}
+  if(gridOn>0&&p.i<50){
+   var gx=ccx+((p.i%cols)-(cols-1)/2)*cell,gy=ccy+(Math.floor(p.i/cols)-(rows-1)/2)*cell;
+   tx=lerp(tx,gx,gridOn);ty=lerp(ty,gy,gridOn);
+  }
+  var dx=p.x-mouse.x,dy=p.y-mouse.y,d2=dx*dx+dy*dy;
+  if(d2<16000&&ftT<.5){var f=(16000-d2)/16000*16,dd=Math.sqrt(d2)||1;p.x+=dx/dd*f;p.y+=dy/dd*f}
+  p.x+=(tx-p.x)*kPos;p.y+=(ty-p.y)*kPos;
+  var flicker=.72+.28*Math.sin(clock*2.2+p.ph);
+  var ta=alive?(.55+.45*flicker):.05;p.a+=(ta-p.a)*kAlpha;
+  var r=p.s*(alive?1:.7)*(p.i<50&&gridOn>0?lerp(1,mobile?2.6:3.4,gridOn):1);
+  if(alive){
+   var hot=p.i<50&&gridOn>.5;
+   cx.fillStyle=hot?'rgba(255,214,150,'+p.a+')':(n%3===0?'rgba(255,179,71,'+p.a+')':'rgba(255,106,43,'+p.a+')');
+   if(r>1.6||hot){cx.globalAlpha=.16;cx.beginPath();cx.arc(p.x,p.y,r*(hot?2:3.2),0,6.28);cx.fill();cx.globalAlpha=1}
+  }else cx.fillStyle='rgba(110,102,91,'+p.a+')';
+  cx.beginPath();cx.arc(p.x,p.y,r,0,6.28);cx.fill();
+ }
+ if(!reduce)requestAnimationFrame(frame);
+}
+function fmt(v){return Math.round(v).toLocaleString('en-US')}
+function onScroll(){
+ var h=document.documentElement.scrollHeight-innerHeight;
+ $('bar').style.transform='scaleX('+(h>0?scrollY/h:0)+')';
+ var r=$('funnel').getBoundingClientRect(),span=r.height-innerHeight;
+ var pr=clamp(-r.top/span,0,1);ftTarget=Math.min(5,pr*5.5);
+ var a=Math.floor(ftTarget),b=Math.min(5,a+1),t=clamp((ftTarget-a-.45)/.55,0,1);
+ setStage(t>.5?b:a);
+ var val=Math.exp(lerp(Math.log(ST[a].c),Math.log(ST[b].c),t));
+ $('stCount').textContent=fmt(ftTarget>=5?50:val);
+ var past=clamp((-r.bottom+innerHeight*1.05)/(innerHeight*.5),0,1);
+ cv.style.opacity=1-past;
+ var tl=$('timeline').getBoundingClientRect();
+ $('tlFill').style.transform='scaleY('+clamp((innerHeight*.7-tl.top)/tl.height,0,1)+')';
+ if(reduce)frame();
+}
+addEventListener('scroll',onScroll,{passive:true});
+addEventListener('resize',function(){size();seed();onScroll()});
+addEventListener('pointermove',function(e){mouse.x=e.clientX;mouse.y=e.clientY},{passive:true});
+size();seed();onScroll();frame();
+
+/* reveal on scroll */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.14});
+[].forEach.call(document.querySelectorAll('.rv'),function(el){io.observe(el)});
+
+/* scoring playground */
+var M=[
+{k:'Job title',o:[['Head of Sales',25],['VP Sales',25],['Sales Manager',10],['Associate Director',0],['Intern',0]]},
+{k:'Company size',o:[['51 to 200',15],['201 to 500',8],['15 people',0],['12,000 people',0]]},
+{k:'Industry',o:[['Real estate',5],['Education',5],['Car dealership',5],['Car manufacturer',0]]},
+{k:'Country',o:[['India',5],['United States',5],['United Kingdom',0]]}];
+var pick=[0,0,0,0],optsEl=$('opts');
+M.forEach(function(g,gi){
+ var fs=document.createElement('fieldset');fs.className='opt';
+ var lg=document.createElement('legend');lg.textContent=g.k;fs.appendChild(lg);
+ var w=document.createElement('div');w.className='chips';
+ g.o.forEach(function(o,oi){
+  var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=o[0];
+  b.setAttribute('aria-pressed',oi===0);
+  b.onclick=function(){pick[gi]=oi;[].forEach.call(w.children,function(c,ci){c.setAttribute('aria-pressed',ci===oi)});score()};
+  w.appendChild(b)});
+ fs.appendChild(w);optsEl.appendChild(fs)});
+var C=2*Math.PI*52,ring=$('ring'),num=$('scoreNum'),cur=50,raf;
+ring.style.strokeDasharray=C;
+function score(){
+ var v=M.map(function(g,i){return g.o[pick[i]][1]}),tot=v.reduce(function(a,b){return a+b},0);
+ ring.style.strokeDashoffset=C*(1-tot/50);
+ ring.style.stroke=tot>=40?'#ff6a2b':tot>=25?'#ffb347':'#6e665b';
+ cancelAnimationFrame(raf);var from=cur,st=performance.now();
+ (function tick(now){var t=reduce?1:clamp((now-st)/500,0,1);cur=Math.round(lerp(from,tot,1-Math.pow(1-t,3)));num.textContent=cur;if(t<1)raf=requestAnimationFrame(tick)})(st);
+ var why=v[0]===0?'Not a buyer title':v[1]===0?'Company size outside target':v[2]===0?'Industry outside target':v[3]===0?'Outside India or the US':'';
+ $('verdict').innerHTML=why?'Sent to review<small>'+why+'. No outreach yet.</small>':tot>=43?'Top of the list<small>Gets the first email today.</small>':'In the sequence<small>Clean lead, lower priority.</small>';
+}
+score();
+
+/* typed email, invented person */
+var LINES=['Hi Priya,','Priya, missed calls during busy hours may mean lost enquiries for Northgate Realty.','Ember answers every call and follows up on each enquiry within a minute.','Happy to send a short example call. Curious if this might matter for Northgate Realty?','Best regards,<br>Shivain'];
+var mb=$('mailBody'),typed=false;
+function typeMail(){
+ if(typed)return;typed=true;
+ if(reduce){LINES.forEach(function(l){var p=document.createElement('p');p.innerHTML=l;mb.appendChild(p)});return}
+ var i=0;(function next(){
+  if(i>=LINES.length)return;
+  var p=document.createElement('p'),caret=document.createElement('span');caret.className='caret';mb.appendChild(p);
+  var txt=LINES[i].split('<br>'),buf='',ch=0,part=0;
+  (function step(){
+   if(ch<txt[part].length){buf+=txt[part][ch++];p.textContent='';p.innerHTML=buf;p.appendChild(caret);setTimeout(step,i===1?17:13)}
+   else if(part<txt.length-1){part++;ch=0;buf+='<br>';step()}
+   else{caret.remove();i++;setTimeout(next,240)}
+  })();
+ })();
+}
+new IntersectionObserver(function(es,o){if(es[0].isIntersecting){typeMail();o.disconnect()}},{threshold:.35}).observe($('mail'));
+
+/* reply router: keyword rules for the page only */
+var L=[['Interested','Send the booking link'],['Not now','Check back in 30 days'],['Wrong person','Ask who owns this'],['Unsubscribe','Remove from every list'],['Out of office','Wait, then follow up']];
+var lanes=$('lanes');L.forEach(function(x){var d=document.createElement('div');d.className='lane';var b=document.createElement('b');b.textContent=x[0];var s=document.createElement('span');s.textContent=x[1];d.appendChild(b);d.appendChild(s);lanes.appendChild(d)});
+function route(t){
+ t=t.toLowerCase();
+ var i=/(unsubscribe|remove me|stop|don.?t email|do not email|take me off)/.test(t)?3:/(out of (the )?office|on leave|vacation|away until|back on)/.test(t)?4:/(wrong person|not my|speak to|talk to my|reach out to|handles this)/.test(t)?2:/(not now|later|next quarter|next year|busy|no budget|not interested|no thanks)/.test(t)?1:0;
+ [].forEach.call(lanes.children,function(l,j){l.classList.toggle('hit',j===i)});
+}
+['Sounds interesting, tell me more','Not right now, maybe next quarter','You should speak to our operations head','Please remove me from your list','Out of office until Monday'].forEach(function(s,i){
+ var b=document.createElement('button');b.type='button';b.className='samp';b.textContent='"'+s+'"';b.onclick=function(){route(s)};$('samples').appendChild(b)});
+$('tryForm').addEventListener('submit',function(e){e.preventDefault();var v=$('tryInput').value.trim();if(v)route(v)});
+route('Sounds interesting, tell me more');
+
+/* skills tape, doubled for a seamless loop */
+var T=['Cold calling','ICP research','Clay','List building','Lead scoring','AI personalisation','Multichannel sequencing','Social selling','Sales copywriting','Claude Code','Video production','Buyer psychology'];
+var html=T.concat(T).map(function(x){return '<span>'+x+'</span>'}).join('');$('tape').innerHTML=html;
+})();
+</script>
+</body>
+</html>
